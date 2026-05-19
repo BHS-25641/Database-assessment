@@ -17,8 +17,9 @@ def print_all_phonesgb():
     cursor.execute(sql)
     results = cursor.fetchall()
     #loop through all the results
+    print(f"name                     amount of gb   manufacturer     ranking ")
     for phones in results:
-        print(f"{phones[1]}{phones[2]}{phones[3]}{phones[4]}")
+        print(f"{phones[1]:<30}{phones[2]:<10}{phones[3]:<20}{phones[4]:<25}")
     #loop finishes
     db.close()
 

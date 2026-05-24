@@ -121,6 +121,7 @@ def print_all_top_phones():
 
 
 # web application menu/ menu interface
+# list of choices
 while True:
     menu = print("""  
                   Welcome to my database application.
@@ -137,6 +138,7 @@ while True:
         7. Print the top 5 phones
         8. Exit
         """)
+    # main code for user interface - has the options and results
     if user_input == "1":
         print_all_phonesgb()
     elif user_input == "2":
@@ -152,7 +154,7 @@ while True:
     elif user_input == "7":
         print_all_top_phones()
     elif user_input == "8":
-        print("Goodbye!")
+        print("Goodbye! Thanks for checking this out")
         break
     else:
         print("That was not an option\n")

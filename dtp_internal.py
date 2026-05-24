@@ -8,7 +8,7 @@ DATABASE = "phonesgb.db"
 
 
 # functions
-# function 1 - print all phones 
+# function 1 - print all phones
 def print_all_phonesgb():
     '''print all the phones nicely'''
     db = sqlite3.connect(DATABASE)
@@ -32,7 +32,6 @@ def print_all_phonesgb_by_gb_desc():
     sql = "SELECT * from phonesgb ORDER BY gb_amount DESC;"
     cursor.execute(sql)
     results = cursor.fetchall()
-    print(results)
     # loop through all the results
     print("name                     amount of gb   manufacturer     ranking ")
     for phones in results:
@@ -78,7 +77,7 @@ def print_all_applephones_data():
     '''print all apple phones and data'''
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
-    sql = "SELECT * from phonesgb WHERE manufacturer = 'apple';";
+    sql = "SELECT * from phonesgb WHERE manufacturer = 'Apple';"
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through all the results
@@ -89,12 +88,28 @@ def print_all_applephones_data():
     db.close()
 
 
-# function 6 - print top 5 phones
+# function 6 - print all samsung phones and data 
+def print_all_samsungphones_data():
+    '''print all samsung phones and data'''
+    db = sqlite3.connect(DATABASE)
+    cursor = db.cursor()
+    sql = "SELECT * from phonesgb WHERE manufacturer = 'Samsung';"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    # loop through all the results
+    print("name                     amount of gb   manufacturer     ranking ")
+    for phones in results:
+        print(f"{phones[1]:<30}{phones[2]:<10}{phones[3]:<20}{phones[4]:<25}")
+    # loop finishes
+    db.close()
+
+
+# function 7 - print top 5 phones
 def print_all_top_phones():
     '''print phones that have ranking above 5'''
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
-    sql = "SELECT * from phonesgb WHERE ranking > 5;"
+    sql = "SELECT * from phonesgb WHERE ranking < 5;"
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through all the results
@@ -107,18 +122,20 @@ def print_all_top_phones():
 
 # web application menu/ menu interface
 while True:
-    menu = print("""Welcome to my database application.
-                This is all about how much gb is within phones""")
+    menu = print("""  
+                  Welcome to my database application.
+             This is all about how much gb is within phones""")
     user_input = input(
         """
-        Which of the following options would you like to pick. Press any number from 1-7.
+        Which of the following options would you like to pick?
         1. Print all phones
         2. Print all phones by highest gb
         3. Print all phones by lowest gb
         4. Print all phone manufacturers
         5. Print all apple manufacturers
         6. Print all samsung manufacturers
-        7. Exit
+        7. Print the top 5 phones
+        8. Exit
         """)
     if user_input == "1":
         print_all_phonesgb()
@@ -131,8 +148,10 @@ while True:
     elif user_input == "5":
         print_all_applephones_data()
     elif user_input == "6":
-        print_all_top_phones()
+        print_all_samsungphones_data()
     elif user_input == "7":
+        print_all_top_phones()
+    elif user_input == "8":
         print("Goodbye!")
         break
     else:

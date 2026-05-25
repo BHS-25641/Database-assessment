@@ -72,7 +72,7 @@ def print_all_phones_manufacturers():
     db.close()
 
 
-# function 5 - print all apple phones and data 
+# function 5 - print all apple phones and data
 def print_all_applephones_data():
     '''print all apple phones and data'''
     db = sqlite3.connect(DATABASE)
@@ -88,7 +88,7 @@ def print_all_applephones_data():
     db.close()
 
 
-# function 6 - print all samsung phones and data 
+# function 6 - print all samsung phones and data
 def print_all_samsungphones_data():
     '''print all samsung phones and data'''
     db = sqlite3.connect(DATABASE)
@@ -109,7 +109,7 @@ def print_all_top_phones():
     '''print phones that have ranking above 5'''
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
-    sql = "SELECT * from phonesgb WHERE ranking < 5;"
+    sql = "SELECT * from phonesgb WHERE ranking < 6;"
     cursor.execute(sql)
     results = cursor.fetchall()
     # loop through all the results
@@ -123,7 +123,7 @@ def print_all_top_phones():
 # web application menu/ menu interface
 # list of choices
 while True:
-    menu = print("""  
+    menu = print("""
                   Welcome to my database application.
              This is all about how much gb is within phones""")
     user_input = input(
